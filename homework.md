@@ -24,3 +24,14 @@ LEC-4
 -Use of regex in routes /a/,/*fly$/
 -Reading the query params in the routes
 -Readibg the dynamic routes
+
+LEC-5
+-Multiple Route Handlers - Play with the code
+-next()
+-next function and errors along with res.send()
+-app.use("/route",rH,[rH2 , rH3],rH4,rH5);
+-what is middleware, why do we need it?
+-how express JS basically handles request behind the scenes(middleware chain)
+-Difference between app.use() vs app.all()
+-Write a dummy auth middleware for admin
+-Write a dummy auth middleware for all user routes, except /user/login

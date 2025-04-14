@@ -62,24 +62,50 @@ const{adminAuth,userAuth}=require("./middlewares/auth")
 // why we use of middleware
 //handle Auth middleware for all GET,POST,PATCH,DELETE requests
 
-app.use("/admin",adminAuth);
+// app.use("/admin",adminAuth);
 
-// app.use("/user",userAuth);
+// // app.use("/user",userAuth);
 
-app.get("/user/login",(req,res)=>{
-   res.send("login successfull");
-})
+// app.get("/user/login",(req,res)=>{
+//    res.send("login successfull");
+// })
 
-app.get("/user",userAuth,(req,res)=>{
-   res.send("user data send ");
-})
+// app.get("/user",userAuth,(req,res)=>{
+//    res.send("user data send ");
+// })
 
-app.get("/admin/getdata",(req,res)=>{
-  res.send(" Data send");
+// app.get("/admin/getdata",(req,res)=>{
+//   res.send(" Data send");
+// });
+
+// app.get("/admin/deletedata",(req,res)=>{
+//   res.send("All Data Deleted");
+// });
+
+// Error Handling
+// app.use("/",(err,req,res,next)=>{
+//   if(err){
+//      //log your answer
+//      res.status(500).send("Something went wrong");
+//   }
+// });
+
+app.get("/getUserData",(req,res)=>{
+    try{
+ // Logic of DB call and get user data
+ throw new Error("hbwc");
+ res.send("User Data sent");
+    }
+    catch(err){
+    res.status(500).send("Some Error contact support team");
+    }
 });
 
-app.get("/admin/deletedata",(req,res)=>{
-  res.send("All Data Deleted");
+app.use("/",(err,req,res,next)=>{
+    if(err){
+       //log your answer
+       res.status(500).send("Something went wrong");
+     }
 });
 
 

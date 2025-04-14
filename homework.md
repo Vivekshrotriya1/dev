@@ -1,0 +1,12 @@
+LEC-3
+-create a repository
+-initilaise the repository
+-node_modules,package.json,package-lock.json
+-install express
+-create a server
+-listen to posr 7777
+-write request handlers for /test,/hello
+-intsll nodemon and update scripts inside     pacakge.json
+-what are dependencies
+-what is the use of "-g" while npm install is
+-differenece between caret and tidle (^ vs ~)

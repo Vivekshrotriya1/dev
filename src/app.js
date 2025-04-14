@@ -5,21 +5,50 @@ const express =require("express");
 
 const app=express();
 
-app.use("/hello/2",(req,res)=>{
-    res.send("hello from the server Hello2");
- });
+// this will only handle GET API call on User
+app.get("/user",(req,res)=>{
+   res.send("Hello I'm User");
+})
 
-app.use("/hello",(req,res)=>{
-   res.send("hello from the server Hello");
-});
+app.post("/user",(req,res)=>{
+//this willsave the data
+   res.send("Data recieved successfully");
+})
 
-app.use( "/test", (req,res)=>{
-   res.send("hello from the server test");
-});
+app.delete("/user",(req,res)=>{
+//this will delete the data
+   res.send("Data delete successfully");
+})
 
-app.use("/",(req,res)=>{
+app.put("/user",(req,res)=>{
+//this will put the data
+  res.send("Data put successfully");
+})
+
+app.patch("/user",(req,res)=>{
+//this will patch the data
+   res.send("Data patch successfully");
+})
+
+// this will handle all https methods on /test
+app.use("/test",(req,res)=>{
    res.send("hello from the dashboard");
 });
+
+
+// app.use("/hello/2",(req,res)=>{
+//     res.send("hello from the server Hello2");
+//  });
+
+// app.use("/hello",(req,res)=>{
+//    res.send("hello from the server Hello");
+// });
+
+// app.use( "/test", (req,res)=>{
+//    res.send("hello from the server test");
+// });
+
+
 
 app.listen(7777,()=>{
     console.log("Server is succes")

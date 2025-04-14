@@ -20,3 +20,7 @@ LEC-4
 -order of the routes matter a lot
 -Install Postman app and make a workspace/collection > test API call
 -Write logic to handle GET,POST,PATCH,DELETE PI Calls and test them on Postman
+-Explore routing and use of ?,*,(),+ in the routes
+-Use of regex in routes /a/,/*fly$/
+-Reading the query params in the routes
+-Readibg the dynamic routes

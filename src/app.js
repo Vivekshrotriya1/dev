@@ -26,6 +26,53 @@ app.post("/signup",async(req,res)=>{
 
 });
 
+// Get user by email
+app.get("/user",async (req,res)=>{
+    const userEmail=req.body.emailId;
+
+   try{
+
+    // is two user has same email id so find will return the both users data
+//    const users= await User.find({emailId: userEmail});
+//    if(users.length===0){
+//     res.status(400).send("user not found");
+//    }
+//    else{
+//     res.send(users);
+//    }
+
+
+// to find only one user we use findOne() and return the oldest user
+    const user= await User.findOne({emailId: userEmail});
+
+    if(!user){
+        res.status(404).send("user not found");
+    }
+    else{
+      res.send(user);
+    }
+   }
+   catch(err){
+    res.status(400).send("Some went wrong...");
+   }
+
+
+
+
+});
+
+// Feed API -GET/feed -get all the users from the database
+app.get("/feed",async (req,res)=>{
+   try{
+    // it will get the all users data which is present in datbase
+        const users =await User.find({});
+    res.send(users);
+   }
+   catch(err){
+    res.status(400).send("Some went wrong...");
+   }
+});
+
 connectDB()
 .then(()=>{
     console.log("Database connection successfull");

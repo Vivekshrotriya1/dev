@@ -50,4 +50,8 @@ LEC-6
 LEC-7
 -what is the difference between JS object and JSON.
 -Add the express.json middleware to your app
--Make your signup API dynamic to recive data from  the end user(postman,browser etc)
+-Make your signup API dynamic to recive data from  the end user(postman,browser etc).
+-User.findOne with duplicate email ids, which object returned first.
+-API -Get user by email
+-API- Feed API - GET/Feed - get all the users from the database.
+-Api - get user by id(homework);

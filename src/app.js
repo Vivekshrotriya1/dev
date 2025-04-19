@@ -6,20 +6,17 @@ const connectDB = require("./config/database");
 const User=require("./models/user");
 const app=express();
 
+// postman se jo body se json data bhejte hai usko read karne ke liye ye middle ware use krte hai or har method ke liye chalega
+app.use(express.json());
+
 // Create POST /signup API
+// to make signup dynamic
 app.post("/signup",async(req,res)=>{
-    // create instance/object of the User Model
-    const user=new User({
-        firstName:"Lalo",
-        lastName:"Shrotriya",
-        emailId:"rahul@.com",
-        password:"r123",
-        age:27,
-        gender:"Male",
-    })
-    // then save the data in the User Model
-    // save() give me promise so we use await and async
-    // generally we use try catch block for save()
+
+// create instance/object of the User Model
+// because of req.body our sign up is dynamic
+    const user=new User(req.body);
+
     try{
         await user.save()
    res.send("User added successfully");
@@ -27,7 +24,7 @@ app.post("/signup",async(req,res)=>{
         res.send("errro");
     }
 
-})
+});
 
 connectDB()
 .then(()=>{

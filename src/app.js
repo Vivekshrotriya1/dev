@@ -29,7 +29,7 @@ app.post("/signup",async(req,res)=>{
 // Get user by email
 app.get("/user",async (req,res)=>{
     const userEmail=req.body.emailId;
-
+//   console.log(userEmail);
    try{
 
     // is two user has same email id so find will return the both users data
@@ -71,6 +71,36 @@ app.get("/feed",async (req,res)=>{
    catch(err){
     res.status(400).send("Some went wrong...");
    }
+});
+
+// delete api
+app.delete("/user",async (req,res)=>{
+   const userId=req.body.userId;
+
+   try{
+    //   const user =await User.findByIdAndDelete({_id:userId})
+    // or same
+      const user =await User.findByIdAndDelete(userId);
+      res.send("User deleted successfully");
+   }
+   catch(err){
+    res.status(400).send("Some went wrong...");
+   }
+
+})
+
+// Create a API to upadte data of the user
+// isme me agar kuch new filed add karna chaunga nhi hoga jab tak vo filed schema me add nhi ho jati
+app.patch("/user",async (req,res)=>{
+    const userId=req.body.userId;
+    const  data =req.body;
+    try{
+        await User.findByIdAndUpdate({_id:userId},data);
+        res.send("User updated successfully");
+    }
+    catch(err){
+        res.status(400).send("Something went wrong");
+    }
 });
 
 connectDB()

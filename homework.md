@@ -55,3 +55,9 @@ LEC-7
 -API -Get user by email
 -API- Feed API - GET/Feed - get all the users from the database.
 -Api - get user by id(homework);
+-Create a delete user API
+-difference between patch and put
+-API- create a update API for update a user
+-Explore the Mongoose Documentation for Model Methods
+-What are options in a Model.findOneAndUpdate method, explore more about  it.
+-API - update the user with email id

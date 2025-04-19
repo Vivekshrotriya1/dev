@@ -36,3 +36,13 @@ LEC-5
 -Write a dummy auth middleware for admin
 -Write a dummy auth middleware for all user routes, except /user/login
 -Error Handling using  app.use("/",(err,req,res,next)=>{});
+
+LEC-6
+-create a free cluster on mongodb official website(mongodb atlas)
+-install mongoose library
+-connext your application to the database "Connection-url"/devTinder not the cluster
+-Call the connectDB function and connect to database before starting application on 7777 server
+-create a user Schema and user Model
+-Create a POST /signup API to add data to database
+-Push some documents using API calls from postman
+-Error handling using try,catch

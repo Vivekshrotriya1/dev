@@ -21,7 +21,7 @@ app.post("/signup",async(req,res)=>{
         await user.save()
    res.send("User added successfully");
     } catch(err){
-        res.send("errro");
+        res.send("error");
     }
 
 });
@@ -95,11 +95,15 @@ app.patch("/user",async (req,res)=>{
     const userId=req.body.userId;
     const  data =req.body;
     try{
-        await User.findByIdAndUpdate({_id:userId},data);
-        res.send("User updated successfully");
+      const user = await User.findByIdAndUpdate({_id:userId},data,{
+        returnDocument:"after",
+        runValidators:true,
+      });
+      console.log(user);
+      res.send("User updated successfully");
     }
     catch(err){
-        res.status(400).send("Something went wrong");
+        res.status(400).send("Upadte fail:"+ err.message );
     }
 });
 
@@ -112,4 +116,6 @@ connectDB()
 })
 .catch((err)=>{
     console.log("Database connection is not successfull");
+
 });
+

@@ -60,4 +60,11 @@ LEC-7
 -API- create a update API for update a user
 -Explore the Mongoose Documentation for Model Methods
 -What are options in a Model.findOneAndUpdate method, explore more about  it.
--API - update the user with email id
+- API - update the user with email id
+
+LEC-8
+-explore schema options from the documentation.
+-add required,unique,lowercase,min,minlength,max,maxlength,trim
+-Add default value
+-Create a custom validation function for gender
+-Improve the DB Schema validation- put all validation on each filed in schema 

@@ -67,4 +67,5 @@ LEC-8
 -add required,unique,lowercase,min,minlength,max,maxlength,trim
 -Add default value
 -Create a custom validation function for gender
--Improve the DB Schema validation- put all validation on each filed in schema 
+-Improve the DB Schema validation- put all validation on each filed in schema
+- add timestamps to the userSchema

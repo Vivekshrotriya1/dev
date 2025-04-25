@@ -71,3 +71,5 @@ LEC-8
 -Add timestamps to the userSchema
 -Add API Level validation on Patch request and sign up Post API
 -DATA Sanitizing - Add API validation for each field
+-Install validator
+-explore validator libraray function ans Use validator function for email,photoUrl,password

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 // create a schema
 const userSchema = new mongoose.Schema({
 
@@ -17,10 +18,21 @@ const userSchema = new mongoose.Schema({
        unique:true, //unique id only
        lowercase:true, //automatically change in lower case
        trim:true,
+      //  validation of email id we use this
+       validate(value){
+         if(!validator.isEmail(value)){
+            throw new Error("Invalid email address: "+ value);
+         }
+       }
     },
     password:{
        type:String,
        required:true,
+       validate(value){
+         if(!validator.isStrongPassword(value)){
+            throw new Error("Enter a Strong Password : "+ value);
+         }
+       }
     },
     age:{
        type:Number,
@@ -39,7 +51,12 @@ const userSchema = new mongoose.Schema({
     },
     photoUrl:{
       type:String,
-      default:"https://cubanvr.com/wp-content/uploads/2023/07/ai-image-generators.webp"
+      default:"https://cubanvr.com/wp-content/uploads/2023/07/ai-image-generators.webp",
+      validate(value){
+         if(!validator.isURL(value)){
+            throw new Error("Invalid email address: "+ value);
+         }
+       }
     },
     about:{
      type:String,

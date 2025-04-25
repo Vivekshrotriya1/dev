@@ -68,4 +68,6 @@ LEC-8
 -Add default value
 -Create a custom validation function for gender
 -Improve the DB Schema validation- put all validation on each filed in schema
-- add timestamps to the userSchema
+-Add timestamps to the userSchema
+-Add API Level validation on Patch request and sign up Post API
+-DATA Sanitizing - Add API validation for each field

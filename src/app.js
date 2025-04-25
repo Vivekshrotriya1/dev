@@ -91,10 +91,25 @@ app.delete("/user",async (req,res)=>{
 
 // Create a API to upadte data of the user
 // isme me agar kuch new filed add karna chaunga nhi hoga jab tak vo filed schema me add nhi ho jati
-app.patch("/user",async (req,res)=>{
-    const userId=req.body.userId;
+app.patch("/user/:userId",async (req,res)=>{
+    // const userId=req.body.userId;
+    // user id allowed upadte me nahi dalni to ye karenge or route me bhi change karnege
+    const userId=req.params?.userId;
     const  data =req.body;
     try{
+
+    //   unwanted updates ko rokna hai
+      const ALLOWED_UPDATES =["photoUrl","about","gender","age","skills"];
+      const isUpdateAllowed = Object.keys(data).every((k)=>
+        ALLOWED_UPDATES.includes(k)
+      );
+      if(!isUpdateAllowed){
+        throw new Error("Upadte Not Allowed");
+      }
+
+      if(data?.skills.length>10){
+        throw new Error("Skills cannot be more then 10");
+      }
       const user = await User.findByIdAndUpdate({_id:userId},data,{
         returnDocument:"after",
         runValidators:true,

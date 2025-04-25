@@ -73,3 +73,4 @@ LEC-8
 -DATA Sanitizing - Add API validation for each field
 -Install validator
 -explore validator libraray function ans Use validator function for email,photoUrl,password
+-NEVER TRUST req.body

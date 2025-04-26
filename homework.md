@@ -79,3 +79,5 @@ LEC9
 -Validate daat in Signup API(using helper function)
 -Install bcrypt package
 -Create a passwordHash using bcrypt.hash and save the user is encrypted password
+-Create login APi
+-Comapre the passwords and throw errors if email or password is invalid

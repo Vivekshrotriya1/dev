@@ -7,6 +7,7 @@ const User=require("./models/user");
 const{validationSignUpData}=require("./utils/validation");
 const bcrypt=require("bcrypt");
 const app=express();
+const validator=require("validator");
 
 // postman se jo body se json data bhejte hai usko read karne ke liye ye middle ware use krte hai or har method ke liye chalega
 app.use(express.json());
@@ -44,7 +45,31 @@ try{
 
 });
 
+// login api
+app.post("/login",async (req,res)=>{
+  try{
+     const{emailId,password}=req.body;
 
+     if(!validator.isEmail(emailId)){
+       throw new Error("Invalid Credentials");
+     }
+     const user = await User.findOne({emailId:emailId});
+     if(!user){
+      throw new Error("Invalid Credentials");
+     }
+
+     const isPasswordValid =await bcrypt.compare(password,user.password);
+
+     if(isPasswordValid){
+      res.send("Login Successful!!!");
+     }
+     else{
+      throw new Error("Invalid Credentials");
+     }
+  }catch(err){
+   res.status(400).send("ERROR : " + err.message);
+  }
+});
 
 // Get user by email
 app.get("/user",async (req,res)=>{

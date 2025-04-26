@@ -74,3 +74,8 @@ LEC-8
 -Install validator
 -explore validator libraray function ans Use validator function for email,photoUrl,password
 -NEVER TRUST req.body
+
+LEC9
+-Validate daat in Signup API(using helper function)
+-Install bcrypt package
+-Create a passwordHash using bcrypt.hash and save the user is encrypted password

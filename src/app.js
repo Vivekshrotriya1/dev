@@ -4,6 +4,8 @@
 const express =require("express");
 const connectDB = require("./config/database");
 const User=require("./models/user");
+const{validationSignUpData}=require("./utils/validation");
+const bcrypt=require("bcrypt");
 const app=express();
 
 // postman se jo body se json data bhejte hai usko read karne ke liye ye middle ware use krte hai or har method ke liye chalega
@@ -12,19 +14,37 @@ app.use(express.json());
 // Create POST /signup API
 // to make signup dynamic
 app.post("/signup",async(req,res)=>{
+try{
+  // validation of the data
+  validationSignUpData(req);
+
+  const{firstName,lastName,emailId,password,gender}=req.body;
+
+  // encryption of password
+  const passwordHash =await bcrypt.hash(password,10);
+  console.log(passwordHash)
+
 
 // create instance/object of the User Model
 // because of req.body our sign up is dynamic
-    const user=new User(req.body);
+    const user=new User({
+      firstName,
+      lastName,
+      emailId,
+      password:passwordHash,
+      gender,
+    });
 
-    try{
+
         await user.save()
    res.send("User added successfully");
     } catch(err){
-        res.send("error");
+        res.send("error: " + err.message);
     }
 
 });
+
+
 
 // Get user by email
 app.get("/user",async (req,res)=>{
